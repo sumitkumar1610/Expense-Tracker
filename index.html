@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- HOME -->
+    <div id="home" class="active home-wrapper">
+      <div id="main-menu">
+        <h2 class="app-title">💸 Expense Tracker</h2>
+        <div class="menu-card travel" onclick="showSection('travel')">
+          <h3>🚗 Travel Spending</h3>
+          <p>Split expenses and settle up easily</p>
+        </div>
+        <div class="menu-card household" onclick="showSection('household')">
+          <h3>🏠 Household Spending</h3>
+          <p>Track income, spending & savings together</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAVEL -->
+    <div id="travel" class="section card">
+      <h3>🚗 Travel Expenses</h3>
+      <form id="travel-form">
+        <input type="number" id="travel-people-count" placeholder="Number of People Going" required />
+        <input type="text" id="travel-name" placeholder="Person's Name" required />
+        <input type="number" id="travel-amount" placeholder="Amount Spent" required />
+        <select id="travel-currency">
+          <option value="INR" selected>INR (₹)</option>
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+        </select>
+        <input type="date" id="travel-date" required />
+        <input type="text" id="travel-desc" placeholder="What was it spent on?" required />
+        <button type="submit">Add Expense</button>
+      </form>
+      <ul id="travel-list"></ul>
+      <button onclick="calculateTravelSplit()">Calculate Split</button>
+      <div id="travel-result"></div>
+      <div class="back-btn">
+        <button onclick="showSection('home')">⬅ Back to Home</button>
+      </div>
+    </div>
+
+    <!-- HOUSEHOLD -->
+    <div id="household" class="section card">
+      <h3>🏠 Household Spendings</h3>
+      <form id="household-form">
+        <input type="number" id="household-name" placeholder="Number of Earners" required />
+        <button type="submit">Next</button>
+      </form>
+      <div id="household-result"></div>
+      <div class="back-btn">
+        <button onclick="showSection('home')">⬅ Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
